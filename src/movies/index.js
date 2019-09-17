@@ -36,7 +36,7 @@ class Movies extends Component {
   render() {
     return (
       <div>
-        <h5>All Movies:</h5>
+        <h2>All Movies:</h2>
         <Input placeholder='Search Movies' onChange={this.searchMovies}/>
         <Table celled inverted selectable>
           <Table.Header>

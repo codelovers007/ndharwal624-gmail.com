@@ -15,6 +15,7 @@ class Movie extends Component {
     this.state = {
       movies: movies,
       movie: {},
+      characters: [],
       movie_id: this.props.match.params.movieId
     }
   }
@@ -24,7 +25,7 @@ class Movie extends Component {
       return movie.episode_id === Number(this.state.movie_id)
     })
     if (movieData){
-      this.setState({movie: movieData})
+      this.setState({movie: movieData, characters: movieData.characters})
     }
   }
 
@@ -32,7 +33,7 @@ class Movie extends Component {
     let movies = _.map(this.state.movies, movie => {
       if (movie.episode_id === Number(this.state.movie_id)) {
         movie = Object.assign(movie, {favourite: true})
-        this.setState({movie: movie})
+        this.setState({movie: movie, characters: movie.characters})
       }
       return movie
     })
@@ -44,7 +45,7 @@ class Movie extends Component {
     let movies = _.map(this.state.movies, movie => {
       if (movie.episode_id === Number(this.state.movie_id)) {
         movie = Object.assign(movie, {favourite: false})
-        this.setState({movie: movie})
+        this.setState({movie: movie, characters: movie.characters})
       }
       return movie
     })
@@ -77,6 +78,18 @@ class Movie extends Component {
             </Item.Extra>
           </Item.Content>
         </Item>
+          <List celled>
+            {
+              params.characters.map((peopleUrl) => {
+                return (
+                  <Link to='#' key={peopleUrl}>
+                    <List.Item>
+                      {peopleUrl}
+                    </List.Item>
+                  </Link>)
+              })
+            }
+          </List>
       </div>
     )
   }
