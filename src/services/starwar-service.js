@@ -4,7 +4,8 @@ export const starwarService = {
   getMovies,
   getPeoples,
   searchPeople,
-  searchMovies
+  searchMovies,
+  getPeopleDetail
 };
 
 
@@ -38,6 +39,14 @@ function getPeoples() {
     headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'}
   };
   return fetch(configVariable.peopleBaseUrl, requestOptions).then(handleResponse);
+}
+
+function getPeopleDetail(peopleUrl) {
+  const requestOptions = {
+    method: 'GET',
+    headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'}
+  };
+  return fetch(peopleUrl, requestOptions).then(handleResponse);
 }
 
 function handleResponse(response) {

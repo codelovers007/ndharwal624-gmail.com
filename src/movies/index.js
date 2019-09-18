@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Image, List, Table, Input } from 'semantic-ui-react';
+import { Table, Input } from 'semantic-ui-react';
 import { Link } from "react-router-dom";
 import _  from "lodash";
 import { starwarService } from '../services/starwar-service.js';
@@ -15,7 +15,7 @@ class Movies extends Component {
 
   componentDidMount() {
     let movies = JSON.parse(localStorage.getItem('movies')) || []
-    movies = _.orderBy(movies, ['favourite'], ['asc'])
+    movies =_.orderBy(movies, [( movie ) => { return movie.favourite===true }], ['desc']); 
     if (movies.length !== 0){
       this.setState({movies: movies})
     } else {

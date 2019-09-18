@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Image, List, Table, Input } from 'semantic-ui-react';
+import { Table } from 'semantic-ui-react';
 import { Link } from "react-router-dom";
 import _  from "lodash";
 import { starwarService } from '../services/starwar-service.js';

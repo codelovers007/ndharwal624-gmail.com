@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
-import { Item, Button, Image, List } from 'semantic-ui-react';
+import { Item, Popup, Button } from 'semantic-ui-react';
 import { Link } from "react-router-dom";
 import _  from "lodash";
+import { ToolTip }  from "./tooltip.js";
 import { starwarService } from '../services/starwar-service.js';
 
 import { toast } from 'react-toastify';
@@ -63,7 +64,7 @@ class Movie extends Component {
           : 
           <Button size='medium' floated={'left'} onClick={this.addToFavourite}>Add to favourite</Button>
         }
-        <Button floated={'right'}><Link to='/'>Back</Link></Button>
+        <span style={{float: 'right'}}><Link to='/'>Back</Link></span>
         <h5>{params.movie.title}</h5>
         <Item>
           <Item.Content>
@@ -78,21 +79,31 @@ class Movie extends Component {
             </Item.Extra>
           </Item.Content>
         </Item>
-          <List celled>
             {
               params.characters.map((peopleUrl) => {
-                return (
-                  <Link to='#' key={peopleUrl}>
-                    <List.Item>
-                      {peopleUrl}
-                    </List.Item>
-                  </Link>)
+                return ( 
+                  <div key={peopleUrl}>
+                    <Popup className="tooltip" position={"left top"}
+                        trigger={
+                          <Link to='#'>
+                            <Item>
+                              {peopleUrl}
+                            </Item>
+                          </Link>
+                        }
+                      >
+                    <ToolTip
+                      peopleUrl={peopleUrl}
+                    />
+                  </Popup><br/>
+                </div>
+                )
               })
             }
-          </List>
       </div>
     )
   }
 }
 
 export {Movie}
+
