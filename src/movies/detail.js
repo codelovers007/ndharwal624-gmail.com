@@ -83,7 +83,7 @@ class Movie extends Component {
               params.characters.map((peopleUrl) => {
                 return ( 
                   <div key={peopleUrl}>
-                    <Popup className="tooltip" position={"left top"}
+                    <Popup className="tooltip" position={"top left"}
                         trigger={
                           <Link to='#'>
                             <Item>

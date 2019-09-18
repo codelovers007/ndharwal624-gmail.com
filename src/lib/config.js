@@ -5,3 +5,6 @@ export const configVariable = {
   speciesBaseUrl: 'https://swapi.co/api/species',
   planetsBaseUrl: 'https://swapi.co/api/planets'
 }
+
+export const headerData = {
+'Content-Type': 'application/json'}

@@ -1,4 +1,4 @@
-import { configVariable } from '../lib/config';
+import { configVariable, headerData } from '../lib/config';
 
 export const starwarService = {
   getMovies,
@@ -12,41 +12,41 @@ export const starwarService = {
 function getMovies() {
   const requestOptions = {
     method: 'GET',
-    headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'}
+    headers: headerData
   };
-  return fetch(configVariable.moviesBaseUrl, requestOptions).then(handleResponse);
+  return fetch(configVariable.moviesBaseUrl, requestOptions, {mode: 'no-cors'}).then(handleResponse);
 }
 
 function searchMovies(searchStr) {
   const requestOptions = {
     method: 'GET',
-    headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'}
+    headers: headerData
   };
-  return fetch(`${configVariable.moviesBaseUrl}/?search=${searchStr}`, requestOptions).then(handleResponse);
+  return fetch(`${configVariable.moviesBaseUrl}/?search=${searchStr}`, requestOptions, {mode: 'no-cors'}).then(handleResponse);
 }
 
 function searchPeople(searchStr) {
   const requestOptions = {
     method: 'GET',
-    headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'}
+    headers: headerData
   };
-  return fetch(`${configVariable.searchPeople}/?search=${searchStr}`, requestOptions).then(handleResponse);
+  return fetch(`${configVariable.searchPeople}/?search=${searchStr}`, requestOptions, {mode: 'no-cors'}).then(handleResponse);
 }
 
 function getPeoples() {
   const requestOptions = {
     method: 'GET',
-    headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'}
+    headers: headerData
   };
-  return fetch(configVariable.peopleBaseUrl, requestOptions).then(handleResponse);
+  return fetch(configVariable.peopleBaseUrl, requestOptions, {mode: 'no-cors'}).then(handleResponse);
 }
 
 function getPeopleDetail(peopleUrl) {
   const requestOptions = {
     method: 'GET',
-    headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'}
+    headers: headerData
   };
-  return fetch(peopleUrl, requestOptions).then(handleResponse);
+  return fetch(peopleUrl, requestOptions, {mode: 'no-cors'}).then(handleResponse);
 }
 
 function handleResponse(response) {
